@@ -5,10 +5,10 @@ create or replace procedure sysadm.gfcprcspriority as
   PRAGMA AUTONOMOUS_TRANSACTION; 
   l_hist INTEGER := 1; --consider nVision processes going back this many days
 begin
-  EXECUTE IMMEDIATE 'truncate table sysadm.ps_xx_gfcprcsprty';
+  EXECUTE IMMEDIATE 'truncate table ps_xx_gfcprcsprty';
 
 --populate priorty table with known startup processes 
-insert /*+APPEND*/ into sysadm.ps_ft_gfcprcsprty
+insert /*+APPEND*/ into ps_ft_gfcprcsprty
 with r as (
 select r.prcstype, r.prcsname, r.prcsinstance, r.oprid, r.runcntlid, r.runstatus, r.servernamerun
 , CAST(r.rqstdttm AS DATE) rqstdttm
@@ -17,9 +17,9 @@ select r.prcstype, r.prcsname, r.prcsinstance, r.oprid, r.runcntlid, r.runstatus
 from psprcsrqst r
 where r.prcstype = 'COBOL SQL'
 and r.prcsname = 'GPPDPRUN' -- limit to AM calc
-and r.runcntlid like 'GPPDPRUN_CALCUL____' --restrict to these run controls
+and r.runcntlid like 'GPPDPRUN_CALC______' --restrict to these run controls
 and r.enddttm>r.begindttm --it must have run to completion
-and r.oprid IN('startup') --limit to overnight batch operator IDs
+and r.oprid IN('batch') --limit to overnight batch operator IDs
 and r.jobinstance > 0 --run as part of a jobset
 and r.begindttm >= TRUNC(SYSDATE)-l_hist --consider process going back l_hist days from midnight today
 and r.runstatus = '9' --it has run to  success

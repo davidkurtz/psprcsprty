@@ -5,10 +5,10 @@ create or replace procedure sysadm.gfcprcspriority as
   PRAGMA AUTONOMOUS_TRANSACTION; 
   l_hist INTEGER := 61; --consider nVision processes going back this many days
 begin
-  EXECUTE IMMEDIATE 'truncate table sysadm.ps_xx_gfcprcsprty';
+  EXECUTE IMMEDIATE 'truncate table ps_xx_gfcprcsprty';
 
 --populate priorty table with known nVision processes 
-insert /*+APPEND*/ into sysadm.ps_ft_gfcprcsprty
+insert /*+APPEND*/ into ps_ft_gfcprcsprty
 with r as (
 select r.prcstype, r.prcsname, r.prcsinstance, r.oprid, r.runcntlid, r.runstatus, r.servernamerun
 , CAST(r.rqstdttm AS DATE) rqstdttm
