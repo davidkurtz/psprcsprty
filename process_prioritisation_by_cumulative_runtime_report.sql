@@ -1,4 +1,5 @@
 REM process_prioritisation_by_cumulative_runtime_report.sql
+REM https://blog.psftdba.com/2023/11/prioritising-scheduled-processes-by.html
 spool process_prioritisation_by_cumulative_runtime_report.lst
 clear screen
 set pages 99 lines 200

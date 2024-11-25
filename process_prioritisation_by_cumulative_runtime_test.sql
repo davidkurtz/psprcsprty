@@ -1,4 +1,5 @@
 REM process_prioritisation_by_cumulative_runtime_test.sql
+REM https://blog.psftdba.com/2023/11/prioritising-scheduled-processes-by.html
 
 INSERT INTO psprcsque
 (prcsinstance, prcstype, prcsname, oprid, runcntlid)

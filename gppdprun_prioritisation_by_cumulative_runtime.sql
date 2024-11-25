@@ -1,4 +1,5 @@
 REM gppdprun_prioritisation_by_cumulative_runtime.sql
+REM https://blog.psftdba.com/2023/11/prioritising-scheduled-processes-by.html
 
 set serveroutput on
 create or replace procedure sysadm.gfcprcspriority as

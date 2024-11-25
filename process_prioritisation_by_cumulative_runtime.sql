@@ -1,4 +1,5 @@
 REM process_prioritisation_by_cumulative_runtime.sql
+REM https://blog.psftdba.com/2023/11/prioritising-scheduled-processes-by.html
 clear screen
 rollback;
 set pages 99 lines 200 

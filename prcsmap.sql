@@ -1,4 +1,5 @@
 REM prcsmap.sql
+REM https://blog.psftdba.com/2023/11/prioritising-scheduled-processes-by.html
 alter session set nls_date_format = 'DD/MM/YY hh24:MI:SS';
 with t as (
 --select TRUNC(SYSDATE)-19/24-0 begindttm
